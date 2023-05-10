@@ -18,8 +18,8 @@ class User implements UserInterface
     private ?string $token;
     private ?string $resetPasswordToken;
     private bool $active;
-    private \DateTime $createAt;
-    private \DateTime $updateAt;
+    private \DateTime $createdAt;
+    private \DateTime $updatedAt;
 
     public function __construct(string $name, string $email)
     {
@@ -31,7 +31,7 @@ class User implements UserInterface
         $this->token = \sha1(uniqid());
         $this->resetPasswordToken = null;
         $this->active = false;
-        $this->createAt = new \DateTime();
+        $this->createdAt = new \DateTime();
         $this->markAsUpdated();
 
     }
@@ -162,22 +162,22 @@ class User implements UserInterface
     /**
      * @return \DateTime
      */
-    public function getCreateAt(): \DateTime
+    public function getCreatedAt(): \DateTime
     {
-        return $this->createAt;
+        return $this->createdAt;
     }
 
     /**
      * @return \DateTime
      */
-    public function getUpdateAt(): \DateTime
+    public function getUpdatedAt(): \DateTime
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 
     public function markAsUpdated(): void
     {
-        $this->updateAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
 

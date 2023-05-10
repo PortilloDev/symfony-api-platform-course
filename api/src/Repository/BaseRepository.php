@@ -67,7 +67,7 @@ abstract class BaseRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    protected function saveEntity(object $entity)
+    protected function saveEntity(object $entity): void
     {
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
@@ -77,7 +77,7 @@ abstract class BaseRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    protected function removeEntity(object $entity)
+    protected function removeEntity(object $entity): void
     {
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
