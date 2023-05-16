@@ -22,7 +22,7 @@ class User implements UserInterface
     private \DateTime $updatedAt;
 
     public function __construct(string $name, string $email)
-    {
+    {;
         $this->id  =Uuid::v4()->toRfc4122();
         $this->name = $name;
         $this->email = $this->setEmail($email);
@@ -33,7 +33,6 @@ class User implements UserInterface
         $this->active = false;
         $this->createdAt = new \DateTime();
         $this->markAsUpdated();
-
     }
 
     /**
@@ -71,12 +70,12 @@ class User implements UserInterface
     /**
      * @param string $email
      */
-    public function setEmail(string $email): void
+    public function setEmail(string $email): string
     {
         if(!\filter_var($email, \FILTER_VALIDATE_EMAIL)) {
                 throw new \LogicException('Invalid email');
         }
-        $this->email = $email;
+        return $email;
     }
 
     /**
